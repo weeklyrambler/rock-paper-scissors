@@ -1,7 +1,8 @@
-
+//Global variables to track game scores. 
 let playerScore = 0;
 let computerScore = 0; 
 
+/*Function returns a random number betwenn 0 and 2 and uses conditional block to determine if the computer chooses rock, paper or scissors. Choice of the computer is saved to the item variable and returned*/
 function getComputerChoice() {
   let num =  Math.floor(Math.random() * 3); 
   let item = null; 
@@ -15,6 +16,7 @@ function getComputerChoice() {
  return item; 
 }
 
+/*Gets the player inputted choice and calls getComputerChoice to get computer's choice. Conditional blocks used to determine the outcome and tally a point for either the computer or player.*/ 
 function playRound(playerSelection, computerSelection) {
   let player = playerSelection; 
   console.log(player); 
@@ -55,90 +57,81 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
-
+/*Function prompts user for their choice and then calls and feeds user's choice to playRound to start the game. Scores for both computer and user are outputted each time. Conditional block determines ultimate winner after all rounds played.*/
 function game(answer) {
- answer = prompt("Please enter rock, paper, or scissors:",)
+ answer = prompt("Round 1/10. Please enter rock, paper, or scissors:",)
  playRound(answer.toLowerCase()); 
  console.log("Your score is: " + playerScore);
  console.log("The computer's score is: " + computerScore);  
- endGame();
+ //endGame();
 
- answer = prompt("Please enter rock, paper, or scissors:",)
+ answer = prompt("Round 2/10. Please enter rock, paper, or scissors:",)
  playRound(answer.toLowerCase()); 
  console.log("Your score is: " + playerScore);
  console.log("The computer's score is: " + computerScore);
- endGame();
+ //endGame();
 
- answer = prompt("Please enter rock, paper, or scissors:",)
+ answer = prompt("Round 3/10. Please enter rock, paper, or scissors:",)
  playRound(answer.toLowerCase()); 
  console.log("Your score is: " + playerScore);
  console.log("The computer's score is: " + computerScore);
- endGame();
+ //endGame();
  
- answer = prompt("Please enter rock, paper, or scissors:",)
+ answer = prompt("Round 4/10. Please enter rock, paper, or scissors:",)
  playRound(answer.toLowerCase()); 
  console.log("Your score is: " + playerScore);
  console.log("The computer's score is: " + computerScore);
- endGame();
+ //endGame();
 
- answer = prompt("Please enter rock, paper, or scissors:",)
+ answer = prompt("Round 5/10. Please enter rock, paper, or scissors:",)
  playRound(answer.toLowerCase()); 
  console.log("Your score is: " + playerScore);
  console.log("The computer's score is: " + computerScore);
- endGame();
+ //endGame();
 
- answer = prompt("Please enter rock, paper, or scissors:",)
+ answer = prompt("Round 6/10. Please enter rock, paper, or scissors:",)
  playRound(answer.toLowerCase()); 
  console.log("Your score is: " + playerScore);
  console.log("The computer's score is: " + computerScore);
- endGame();
+ //endGame();
 
- answer = prompt("Please enter rock, paper, or scissors:",)
+ answer = prompt("Round 7/10. Please enter rock, paper, or scissors:",)
  playRound(answer.toLowerCase()); 
  console.log("Your score is: " + playerScore);
  console.log("The computer's score is: " + computerScore);
- endGame();
+ //endGame();
 
- answer = prompt("Please enter rock, paper, or scissors:",)
+ answer = prompt("Round 8/10. Please enter rock, paper, or scissors:",)
  playRound(answer.toLowerCase()); 
  console.log("Your score is: " + playerScore);
  console.log("The computer's score is: " + computerScore);
- endGame();
+ //endGame();
 
- answer = prompt("Please enter rock, paper, or scissors:",)
+ answer = prompt("Round 9/10. Please enter rock, paper, or scissors:",)
  playRound(answer.toLowerCase()); 
  console.log("Your score is: " + playerScore);
  console.log("The computer's score is: " + computerScore);
- endGame();
+ //endGame();
 
- answer = prompt("Please enter rock, paper, or scissors:",)
+ answer = prompt("Final round! 10/10. Please enter rock, paper, or scissors:",)
  playRound(answer.toLowerCase()); 
  console.log("Your score is: " + playerScore);
  console.log("The computer's score is: " + computerScore);
- endGame();
+ //endGame();
 
- answer = prompt("Please enter rock, paper, or scissors:",)
- playRound(answer.toLowerCase()); 
- console.log("Your score is: " + playerScore);
- console.log("The computer's score is: " + computerScore);
- endGame();
-
- answer = prompt("Please enter rock, paper, or scissors:",)
- playRound(answer.toLowerCase()); 
- console.log("Your score is: " + playerScore);
- console.log("The computer's score is: " + computerScore);
- endGame();
-
- answer = prompt("Please enter rock, paper, or scissors:",)
- playRound(answer.toLowerCase()); 
- console.log("Your score is: " + playerScore);
- console.log("The computer's score is: " + computerScore);
- endGame();
+ if (playerScore > computerScore) {
+  console.log("Congratulations! You have won the most games.")
+ } else if (computerScore > playerScore) {
+  console.log("Oh no! The computer has won the most games! Better luck next time.")
+ } else {
+  console.log("It's a tie! Try again.") 
+ }
 }
 
 game(); 
 
-function endGame() {
+//Function checks to see if either score equals 5 to determine ultimate winner, then resets scores. 
+/*function endGame() {
     if (computerScore == 5) {
         console.log("Uh oh! The computer has reached 5 points and won the game. Better luck next time.")
         computerScore = 0; 
@@ -148,4 +141,4 @@ function endGame() {
         computerScore = 0; 
         playerScore = 0; 
      }
-}
+}*/ 
