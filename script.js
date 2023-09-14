@@ -1,6 +1,8 @@
 //Global variables to track game scores. 
 let playerScore = 0;
 let computerScore = 0; 
+let finalPlayerScore = 0; 
+let finalComputerScore = 0; 
 
 /*Function returns a random number betwenn 0 and 2 and uses conditional block to determine if the computer chooses rock, paper or scissors. Choice of the computer is saved to the item variable and returned*/
 function getComputerChoice() {
@@ -19,16 +21,18 @@ function getComputerChoice() {
 /*Gets the player inputted choice and calls getComputerChoice to get computer's choice. Conditional blocks used to determine the outcome and tally a point for either the computer or player.*/ 
 function playRound(playerSelection, computerSelection) {
   let player = playerSelection; 
-  console.log(player); 
+  document.getElementById("paste").innerHTML = player; 
   computerSelection = getComputerChoice(); 
-  console.log(computerSelection);  
+  document.getElementById("paste").innerHTML = computerSelection; 
   let outcome = ' '; 
   if (player == 'rock' && computerSelection == 'paper') {
    outcome = "Oh no! The computer chose paper, you lose!"; 
    computerScore += 1; 
+   finalComputerScore += 1; 
   } else if (player == 'rock' && computerSelection == 'scissors') {
    outcome = "Yes! rock beats scissors! You win!";  
    playerScore += 1; 
+   finalPlayerScore += 1; 
   } else if (player == 'rock' && computerSelection == 'rock') {
    outcome = "Yikes! It's a tie, you both chose rock! Try again."; 
   };
@@ -36,9 +40,11 @@ function playRound(playerSelection, computerSelection) {
   if (player == 'paper' && computerSelection == 'scissors') {
     outcome = "Oh no! The computer chose scissors, you lose!";
     computerScore += 1; 
+    finalComputerScore += 1; 
   } else if (player == 'paper' && computerSelection == 'rock') {
     outcome = "Yes! paper beats rock! You win!";
     playerScore += 1; 
+    finalPlayerScore += 1; 
   } else if (player == 'paper' && computerSelection == 'paper') {
     outcome = "Yikes! It's a tie, you both chose paper! Try again."; 
   };
@@ -46,62 +52,103 @@ function playRound(playerSelection, computerSelection) {
   if (player == 'scissors' && computerSelection == 'rock') {
     outcome = "Oh no! The computer chose rock, you lose!"; 
     computerScore += 1; 
+    finalComputerScore += 1; 
   } else if (player == 'scissors' && computerSelection == 'paper') {
     outcome = "Yes! scissors beats paper! You win!";  
     playerScore += 1; 
+    finalPlayerScore += 1; 
   } else if (player == 'scissors' && computerSelection == 'scissors') {
     outcome = "Yikes! It's a tie, you both chose scissors! Try again."; 
   }; 
 
-  console.log(outcome);  
+ document.getElementById("paste3").innerHTML = outcome; 
 
 }
 
 /*Function prompts user for their choice and then calls and feeds user's choice to playRound to start the game. Scores for both computer and user are outputted each time. Conditional block determines ultimate winner after all rounds played. */
 
-document.getElementById("rock").addEventListener("click", rock);
-
-function rock() { 
-  let answer = ''; 
-  console.log(answer = 'rock'); 
+document.getElementById("rock").addEventListener("click", () => { 
+  let answer = 'rock'; 
   playRound(answer.toLowerCase()); 
-  console.log("Your score is: " + playerScore);
-  console.log("The computer's score is: " + computerScore);
-  game(); 
-}
+ document.getElementById("paste2").innerHTML = "Your score is: " + playerScore; 
+ document.getElementById("paste").innerHTML = "The computer's score is: " + computerScore; 
+ document.getElementById("paste4").innerHTML = ""; 
+ document.getElementById("paste5").innerHTML = "";
+  document.getElementById("paste6").innerHTML = ""; 
+ game(); 
+}); 
 
 document.getElementById("paper").addEventListener("click", paper); 
 
 function paper() {
-  let answer = ''; 
-  console.log(answer = 'paper'); 
+  let answer = 'paper'; 
   playRound(answer.toLowerCase()); 
-  console.log("Your score is: " + playerScore);
-  console.log("The computer's score is: " + computerScore);
-  game(); 
+  document.getElementById("paste2").innerHTML = "Your score is: " + playerScore; 
+  document.getElementById("paste").innerHTML = "The computer's score is: " + computerScore;
+  document.getElementById("paste4").innerHTML = "";
+  document.getElementById("paste5").innerHTML = "";
+  document.getElementById("paste6").innerHTML = "";
+    game(); 
 }
 
 document.getElementById("scissors").addEventListener("click", scissors); 
 
 function scissors() {
-  let answer = ''; 
-  console.log(answer = 'scissors'); 
+  let answer = 'scissors'; 
   playRound(answer.toLowerCase()); 
-  console.log("Your score is: " + playerScore);
-  console.log("The computer's score is: " + computerScore);
+  document.getElementById("paste2").innerHTML = "Your score is: " + playerScore; 
+  document.getElementById("paste").innerHTML = "The computer's score is: " + computerScore;
+  document.getElementById("paste4").innerHTML = ""; 
+  document.getElementById("paste5").innerHTML = "";
+  document.getElementById("paste6").innerHTML = "";
+  
   game(); 
 }
+
+document.getElementById("reset").addEventListener("click", () => {
+  playerScore = 0; 
+  computerScore = 0; 
+  finalComputerScore = 0; 
+  finalPlayerScore = 0; 
+  document.getElementById("paste").innerHTML = ""; 
+  document.getElementById("paste2").innerHTML = "";
+  document.getElementById("paste3").innerHTML = "";
+  document.getElementById("paste4").innerHTML = "";
+  document.getElementById("paste5").innerHTML = "";
+  document.getElementById("paste6").innerHTML = "";
+})
 
 function game() {
  
  if (playerScore == 5 || computerScore == 5) { 
 
  if (playerScore > computerScore) {
-  console.log("Congratulations! You have won the most games.")
+  document.getElementById("paste5").innerHTML = "Computer score: " + finalComputerScore; 
+  document.getElementById("paste6").innerHTML = "Player score: " + finalPlayerScore; 
+  playerScore = 0; 
+  computerScore = 0;
+ document.getElementById("paste4").innerHTML = "Congratulations! You have won five games before the computer."; 
+ document.getElementById("paste").innerHTML = ""; 
+ document.getElementById("paste2").innerHTML = "";
+ document.getElementById("paste3").innerHTML = "";
  } else if (computerScore > playerScore) {
-  console.log("Oh no! The computer has won the most games! Better luck next time.")
+  document.getElementById("paste5").innerHTML = "Computer score: " + finalComputerScore; 
+  document.getElementById("paste6").innerHTML = "Player score: " + finalPlayerScore; 
+  playerScore = 0; 
+  computerScore = 0;
+ document.getElementById("paste4").innerHTML = "Oh no! The computer has won five games! Better luck next time."; 
+ document.getElementById("paste").innerHTML = ""; 
+ document.getElementById("paste2").innerHTML = "";
+ document.getElementById("paste3").innerHTML = "";
  } else {
-  console.log("It's a tie! Try again.") 
+  document.getElementById("paste5").innerHTML = "Computer score: " + finalComputerScore; 
+  document.getElementById("paste6").innerHTML = "Player score: " + finalPlayerScore; 
+  playerScore = 0; 
+  computerScore = 0;
+ document.getElementById("paste4").innerHTML = "It's a tie! Try again.";
+ document.getElementById("paste").innerHTML = ""; 
+ document.getElementById("paste2").innerHTML = "";
+ document.getElementById("paste3").innerHTML = "";
  }
 } 
 
