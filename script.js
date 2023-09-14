@@ -57,9 +57,44 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
-/*Function prompts user for their choice and then calls and feeds user's choice to playRound to start the game. Scores for both computer and user are outputted each time. Conditional block determines ultimate winner after all rounds played.*/
-function game(answer) {
+/*Function prompts user for their choice and then calls and feeds user's choice to playRound to start the game. Scores for both computer and user are outputted each time. Conditional block determines ultimate winner after all rounds played. */
+
+document.getElementById("rock").addEventListener("click", rock);
+
+function rock() { 
+  let answer = ''; 
+  console.log(answer = 'rock'); 
+  playRound(answer.toLowerCase()); 
+  console.log("Your score is: " + playerScore);
+  console.log("The computer's score is: " + computerScore);
+  game(); 
+}
+
+document.getElementById("paper").addEventListener("click", paper); 
+
+function paper() {
+  let answer = ''; 
+  console.log(answer = 'paper'); 
+  playRound(answer.toLowerCase()); 
+  console.log("Your score is: " + playerScore);
+  console.log("The computer's score is: " + computerScore);
+  game(); 
+}
+
+document.getElementById("scissors").addEventListener("click", scissors); 
+
+function scissors() {
+  let answer = ''; 
+  console.log(answer = 'scissors'); 
+  playRound(answer.toLowerCase()); 
+  console.log("Your score is: " + playerScore);
+  console.log("The computer's score is: " + computerScore);
+  game(); 
+}
+
+function game() {
  
+ if (playerScore == 5 || computerScore == 5) { 
 
  if (playerScore > computerScore) {
   console.log("Congratulations! You have won the most games.")
@@ -68,9 +103,12 @@ function game(answer) {
  } else {
   console.log("It's a tie! Try again.") 
  }
+} 
+
+
 }
 
-game(); 
+//game(); 
 
 //Function checks to see if either score equals 5 to determine ultimate winner, then resets scores. 
 /*function endGame() {
